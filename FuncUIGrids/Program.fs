@@ -2,6 +2,7 @@
 
 open System
 open Avalonia
+open Avalonia.Controls.Presenters
 open Avalonia.Controls.ApplicationLifetimes
 open Avalonia.Themes.Fluent
 open Avalonia.FuncUI.Hosts
@@ -10,8 +11,7 @@ open Avalonia.Controls
 open Avalonia.Layout
 open Avalonia.FuncUI
 open Avalonia.FuncUI.DSL
-open Avalonia.Styling
-open Avalonia.Markup.Xaml.Styling
+open Avalonia.FuncUI.Types
 
 module Main =
     type Person = {FirstName : string; LastName : string; Age : int; Occupation : string }
@@ -29,46 +29,50 @@ module Main =
                 Grid.isSharedSizeScope true
 
                 StackPanel.children [
-                    ListBox.create [
-                        ListBox.dataItems people
-                        ListBox.itemTemplate (
-                            DataTemplateView<Person>.create (
+                    ItemsControl.create [
+                        ListBox.viewItems (
+                            people
+                            |> List.map (
                                 fun person ->
-                                    Grid.create [
-                                        Grid.rowDefinitions "Auto, Auto"
-                                        Grid.showGridLines true
-                                        Grid.columnDefinitions [
-                                            ColumnDefinition(SharedSizeGroup = "A")
-                                            ColumnDefinition(SharedSizeGroup = "B")
-                                            ColumnDefinition(GridLength.Star)
-                                            ColumnDefinition(SharedSizeGroup = "C")
-                                        ]
+                                    ContentPresenter.create [
+                                        ContentPresenter.content (
+                                            Grid.create [
+                                                Grid.rowDefinitions "Auto, Auto"
+                                                Grid.showGridLines true
+                                                Grid.columnDefinitions [
+                                                    ColumnDefinition(SharedSizeGroup = "A")
+                                                    ColumnDefinition(SharedSizeGroup = "B")
+                                                    ColumnDefinition(GridLength.Star)
+                                                    ColumnDefinition(SharedSizeGroup = "C")
+                                                ]
 
-                                        Grid.children [
-                                            TextBlock.create [
-                                                TextBlock.text person.FirstName
-                                                Grid.column 0
-                                                TextBlock.margin (6,0)
+                                                Grid.children [
+                                                    TextBlock.create [
+                                                        TextBlock.text person.FirstName
+                                                        Grid.column 0
+                                                        TextBlock.margin (6,0)
+                                                    ]
+                                                    TextBlock.create [
+                                                        TextBlock.text person.LastName
+                                                        Grid.column 1
+                                                        TextBlock.margin (6,0)
+                                                    ]
+                                                    TextBlock.create [
+                                                        TextBlock.text (string person.Age)
+                                                        Grid.column 2
+                                                        TextBlock.margin (6,0)
+                                                    ]
+                                                    TextBlock.create [
+                                                        TextBlock.text person.Occupation
+                                                        Grid.column 3
+                                                        TextBlock.margin (6,0)
+                                                    ]
+                                                ]
                                             ]
-                                            TextBlock.create [
-                                                TextBlock.text person.LastName
-                                                Grid.column 1
-                                                TextBlock.margin (6,0)
-                                            ]
-                                            TextBlock.create [
-                                                TextBlock.text (string person.Age)
-                                                Grid.column 2
-                                                TextBlock.margin (6,0)
-                                            ]
-                                            TextBlock.create [
-                                                TextBlock.text person.Occupation
-                                                Grid.column 3
-                                                TextBlock.margin (6,0)
-                                            ]
-                                        ]
+                                        )
                                     ]
+                                )
                             )
-                        )
                     ]
 
                     Separator.create []
@@ -128,7 +132,6 @@ type App() =
 
     override this.Initialize() =
         this.Styles.Add (FluentTheme())
-        this.Styles.Add (StyleInclude(baseUri = null, Source = Uri("avares://FuncUIGrids/Styles.axaml")))
         this.Styles.Load "avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"
 
     override this.OnFrameworkInitializationCompleted() =

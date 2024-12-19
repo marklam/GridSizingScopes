@@ -9,14 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AvaloniaXaml Remove="Styles.axaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AvaloniaResource Include="Styles.axaml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Include="Program.fs" />
   </ItemGroup>
 

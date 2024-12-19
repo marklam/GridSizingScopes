@@ -8,14 +8,8 @@
         x:DataType="vm:ViewModel"
         Title="XamlGrids">
     <StackPanel Grid.IsSharedSizeScope="True">
-        <StackPanel.Styles>
-            <Style Selector="ListBoxItem">
-                <Setter Property="Padding" Value="0" />
-            </Style>
-        </StackPanel.Styles>
-
-        <ListBox ItemsSource="{Binding People}">
-            <ListBox.ItemTemplate>
+        <ItemsControl ItemsSource="{Binding People}">
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid Name="myGrid" RowDefinitions="auto, auto" ShowGridLines="True">
                         <Grid.ColumnDefinitions>
@@ -31,8 +25,8 @@
                         <TextBlock Grid.Column="3" Margin="6,0" Text="{Binding Occupation}" />
                     </Grid>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
         <!-- Controls may appear in-between Grids with SharedSizeGroups -->
         <Separator />
