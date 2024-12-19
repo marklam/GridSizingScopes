@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FuncUIGrids", "FuncUIGrids\FuncUIGrids.fsproj", "{C6562E17-18F5-4075-A0D2-3895E2397D0D}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "XamlGrids", "XamlGrids\XamlGrids.fsproj", "{52BD393C-E043-4A42-818E-F6705FF20AAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6562E17-18F5-4075-A0D2-3895E2397D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6562E17-18F5-4075-A0D2-3895E2397D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6562E17-18F5-4075-A0D2-3895E2397D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6562E17-18F5-4075-A0D2-3895E2397D0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52BD393C-E043-4A42-818E-F6705FF20AAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52BD393C-E043-4A42-818E-F6705FF20AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52BD393C-E043-4A42-818E-F6705FF20AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52BD393C-E043-4A42-818E-F6705FF20AAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
